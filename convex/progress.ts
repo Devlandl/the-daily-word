@@ -15,6 +15,18 @@ export const listByPlan = query({
   },
 });
 
+export const listMine = query({
+  args: {},
+  handler: async (ctx) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) return [];
+    return await ctx.db
+      .query("progress")
+      .withIndex("by_userId", (q) => q.eq("userId", identity.subject))
+      .collect();
+  },
+});
+
 export const toggleDay = mutation({
   args: {
     planId: v.id("plans"),

@@ -29,5 +29,7 @@ export default defineSchema({
     userId: v.string(),
     dayNumber: v.number(),
     completedAt: v.number(),
-  }).index("by_planId_userId", ["planId", "userId"]),
+  })
+    .index("by_planId_userId", ["planId", "userId"])
+    .index("by_userId", ["userId"]),
 });
