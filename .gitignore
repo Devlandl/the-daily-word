@@ -4,3 +4,6 @@ node_modules/
 .env
 
 .vercel
+
+# Sentry
+.env.sentry-build-plugin
